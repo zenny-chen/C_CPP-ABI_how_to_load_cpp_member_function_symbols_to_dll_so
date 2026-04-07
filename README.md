@@ -49,7 +49,7 @@ void CPPFunc(int a)
 g++ hello.cpp -o hello.cpp.o -c -std=gnu++17
 ```
 随后，我们用 `readelf -s hello.cpp.o` 来查看所生成的 **hello.cpp.o** 的符号。我们可以看到以下导出的符号信息：
->    133: 0000000000000000    14 FUNC    GLOBAL DEFAULT   55 CPP_CFunc
+>    133: 0000000000000000    14 FUNC    GLOBAL DEFAULT   55 CPP_CFunc  \
    134: 000000000000000e    14 FUNC    GLOBAL DEFAULT   55 _Z7CPPFunci
 
 我们这里可以很明显地看到，基于C ABI的 **`CPP_CFunc`** 这个符号非常干净，与函数名完全一致。而基于C++ ABI的符号则复杂多了，其符号为 **`_Z7CPPFunci`**，而它原先的函数原型为 `void CPPFunc(int a)`。
